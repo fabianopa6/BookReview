@@ -1,0 +1,26 @@
+
+
+    <%= simple_form_for([@book, @book.reviews.build]) do |f| %>
+
+    <div id="rating-form">
+        <label>Avaliação: </label>
+    </div>
+
+
+        <%= f.input :comment %>
+        <div class="row">
+            <div class="col-md-4">
+                <p><%= f.button :submit, class:"btn btn-custom2"%></p>
+            </div>
+            <div class="col-md-8">
+                <p><%= link_to "Cancelar", book_path(@book), class:"btn btn-custom2"%></p>
+            </div>
+        </div>
+    <% end %>
+
+    <script>
+        $('#rating-form').raty({
+            path: '/assets/',
+            scoreName: 'review[rating]'
+        });
+    </script>

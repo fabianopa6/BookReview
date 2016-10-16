@@ -1,0 +1,17 @@
+<%= simple_form_for @book, :html => {:multipart => true } do |f| %>
+
+    <% if @book.category_id? %>
+        <%= select_tag(:category_id, options_for_select(@categories), :prompt => @book.category.name)%>
+    <% else %>
+        <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Escolha uma categoria")%>
+    <% end %>
+
+    <%= f.file_field :book_img %>
+    <%= f.input :title, label: "Título do Lívro:"%>
+    <%= f.input :description, label: "Descrição:"%>
+    <%= f.input :author, label: "Autor:"%>
+
+    <%= f.button :submit , class:"btn btn-custom2"%>
+    <%= link_to "Cancelar", root_path, class:"btn btn-custom2" %>
+
+<% end %>

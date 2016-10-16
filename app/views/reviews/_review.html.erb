@@ -1,0 +1,22 @@
+<div class="review">
+
+
+    <div class="review-rating" data-score="<%= review.rating %>"></div>
+
+    <p class="review-comment"><%= review.comment %></p>
+
+    <% if user_signed_in? %>
+
+        <% if review.user_id == current_user.id %>
+
+            <div class="links btn-group">
+                <b><%= link_to "Editar", edit_book_review_path(review.book, review), class:"btn btn-custom-review" %></b>
+                <b><%= link_to "Excluir", book_review_path(review.book, review), method: :delete, data: { confirm: "Tem certeza que deseja excluir o comentário?"}, class:"btn btn-custom-review"%></b>
+                <p></p>
+            </div>
+
+        <% end %>
+
+    <% end %>
+
+</div>
